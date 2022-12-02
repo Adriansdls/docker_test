@@ -4,5 +4,5 @@ RUN pip install -r requirements.txt
 RUN mkdir -p app
 COPY app.py /app
 WORKDIR /app
-EXPOSE 8080
+EXPOSE 5000
 CMD ["python", "-m", "flask", "run", "--host=0.0.0.0"]

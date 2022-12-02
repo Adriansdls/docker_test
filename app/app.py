@@ -2,6 +2,8 @@ from flask import Flask, jsonify
 from sqlalchemy import create_engine
 from datetime import datetime
 import PyMySQL
+import requests
+from bs4 import BeautifulSoup
 
 user = "schedulin"
 passw = "MySQLIsFun"
@@ -24,3 +26,10 @@ def disconnect(conn):
 @app.route("/hola")
 def hello():
     return "hello"
+
+@app.route("/news")
+def news():
+    r = requests.get("www.eldiario.es")
+    soup = BeautifulSoup(r.content, "html")
+    x = soup.find_all("a")[4]["href"]
+    return x
