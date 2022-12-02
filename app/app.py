@@ -21,3 +21,7 @@ def connect():
 
 def disconnect(conn):
     conn.close()
+
+@app.route("/")
+def hello():
+    return "hello"
