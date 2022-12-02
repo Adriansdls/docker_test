@@ -30,15 +30,16 @@ def hello():
 def news():
     r = requests.get("https://www.eldiario.es")
     soup = BeautifulSoup(r.content, "html")
-    x = soup.find_all("a")[4]["href"]
-
+    x = soup.find_all("a")[1]["href"]
     r_ = requests.get(x)
     soup_ = BeautifulSoup(r_.content, "html")
-    ps = soup_.find_all("p")
+    d = soup_.find_all("div", class_="second-col")[1]
+    ps = d.find_all("p")
 
     texto = []
     for p in ps:
-        texto.append(p.text)
+        t = p.text.replace("\n", " ")
+        texto.append(t)
 
     texto = " ".join(texto)
 
