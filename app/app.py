@@ -28,9 +28,10 @@ def hello():
 
 @app.route("/news")
 def news():
-    r = requests.get("www.eldiario.es")
+    r = requests.get("https://www.eldiario.es")
     soup = BeautifulSoup(r.content, "html")
     x = soup.find_all("a")[4]["href"]
+
     r_ = requests.get(x)
     soup_ = BeautifulSoup(r_.content, "html")
     ps = soup_.find_all("p")
