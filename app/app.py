@@ -1,7 +1,6 @@
 from flask import Flask, jsonify
 from sqlalchemy import create_engine
 from datetime import datetime
-import PyMySQL
 import requests
 from bs4 import BeautifulSoup
 
